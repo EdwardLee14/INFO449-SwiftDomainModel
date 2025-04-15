@@ -80,10 +80,35 @@ class MoneyTests: XCTestCase {
     XCTAssert(total.amount == 10)
     XCTAssert(total.currency == "GBP")
   }
+    
+//    extra credit
+    func testNegativeMoneyAmount() {
+        let negativeUSD = Money(amount: -10, currency: "USD")
+        XCTAssert(negativeUSD.amount == -10)
+        XCTAssert(negativeUSD.currency == "USD")
+    }
+
+    func testInvalidCurrency() {
+        let invalidCurrency = Money(amount: 10, currency: "XYZ")
+        XCTAssert(invalidCurrency.currency == "XYZ")
+        XCTAssert(invalidCurrency.amount == 10)
+    }
+
+    func testAddDifferentCurrencies() {
+        let total = tenUSD.add(fiveGBP)
+        XCTAssert(total.amount == 10)
+        XCTAssert(total.currency == "GBP")
+    }
+    
+    func testConvertWithNegativeAmount() {
+        let negativeUSD = Money(amount: -10, currency: "USD")
+        let converted = negativeUSD.convert("GBP")
+        XCTAssert(converted.currency == "GBP")
+        XCTAssert(converted.amount == -5)
+    }
 
     static var allTests = [
         ("testCanICreateMoney", testCanICreateMoney),
-
         ("testUSDtoGBP", testUSDtoGBP),
         ("testUSDtoEUR", testUSDtoEUR),
         ("testUSDtoCAN", testUSDtoCAN),
@@ -93,9 +118,11 @@ class MoneyTests: XCTestCase {
         ("testUSDtoEURtoUSD", testUSDtoEURtoUSD),
         ("testUSDtoGBPtoUSD", testUSDtoGBPtoUSD),
         ("testUSDtoCANtoUSD", testUSDtoCANtoUSD),
-        
         ("testAddUSDtoUSD", testAddUSDtoUSD),
         ("testAddUSDtoGBP", testAddUSDtoGBP),
+        ("testNegativeMoneyAmount", testNegativeMoneyAmount),
+        ("testInvalidCurrency", testInvalidCurrency),
+        ("testAddDifferentCurrencies", testAddDifferentCurrencies),
+        ("testMultiplyMoney", testMultiplyMoney),
+        ("testConvertWithNegativeAmount", testConvertWithNegativeAmount),
     ]
-}
-
