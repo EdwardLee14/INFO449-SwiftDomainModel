@@ -44,6 +44,11 @@ class JobTests: XCTestCase {
         let hourlyJob = Job(title: "Backwards Janitor", type: Job.JobType.Hourly(-20))
         XCTAssertEqual(hourlyJob.calculateIncome(10), -200)
     }
+    
+    func testNegativeHourlyIncomeLarge() {
+        let hourlyJob = Job(title: "Debt", type: Job.JobType.Hourly(-1000))
+        XCTAssertEqual(hourlyJob.calculateIncome(10), -10000)
+    }
 
     func testZeroIncomeSalary() {
 
@@ -65,6 +70,7 @@ class JobTests: XCTestCase {
         ("testNegativeHourlyIncome", testNegativeHourlyIncome),
         ("testZeroIncomeSalary", testZeroIncomeSalary),
         ("testZeroIncomeHourly", testZeroIncomeHourly),
-
+        ("testNegativeHourlyIncomeLarge", testNegativeHourlyIncomeLarge),
     ]
+
 }

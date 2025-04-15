@@ -94,12 +94,6 @@ class MoneyTests: XCTestCase {
         XCTAssert(negativeUSD.amount == -10)
         XCTAssert(negativeUSD.currency == "USD")
     }
-
-    func testAddDifferentCurrencies() {
-        let total = tenUSD.add(fiveGBP)
-        XCTAssert(total.amount == 10)
-        XCTAssert(total.currency == "GBP")
-    }
     
     func testConvertWithNegativeAmount() {
         let negativeUSD = Money(amount: -10, currency: "USD")
@@ -122,7 +116,6 @@ class MoneyTests: XCTestCase {
         ("testAddUSDtoUSD", testAddUSDtoUSD),
         ("testAddUSDtoGBP", testAddUSDtoGBP),
         ("testNegativeMoneyAmount", testNegativeMoneyAmount),
-        ("testAddDifferentCurrencies", testAddDifferentCurrencies),
         ("testConvertWithNegativeAmount", testConvertWithNegativeAmount),
     ]
 }

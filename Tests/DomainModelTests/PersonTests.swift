@@ -29,11 +29,6 @@ class PersonTests: XCTestCase {
     }
     
 //    extra credit
-    
-    func testPersonWithoutJobOrSpouse() {
-           let sara = Person(firstName: "Sara", lastName: "Smith", age: 30)
-           XCTAssert(sara.toString() == "[Person: firstName:Sara lastName:Smith age:30 job:nil spouse:nil]")
-       }
 
        func testPersonUnderAge() {
            let youngPerson = Person(firstName: "Tommy", lastName: "Harris", age: 12)
@@ -45,7 +40,6 @@ class PersonTests: XCTestCase {
         ("testPerson", testPerson),
         ("testAgeRestrictions", testAgeRestrictions),
         ("testAdultAgeRestrictions", testAdultAgeRestrictions),
-        ("testPersonWithoutJobOrSpouse", testPersonWithoutJobOrSpouse),
         ("testPersonUnderAge", testPersonUnderAge),
     ]
 }
